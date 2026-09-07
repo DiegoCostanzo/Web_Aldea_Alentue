@@ -54,6 +54,160 @@ const AMENITIES = [
   { icon: "🌙", label: "Cielo sin contaminación lumínica" },
 ];
 
+/** Isotipo flor de loto (5 pétalos, trazo simple) — según manual de marca Alentue. */
+function LotusIcon({
+  color = "var(--color-bark)",
+  size = 24,
+}: {
+  color?: string;
+  size?: number;
+}) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 100 100"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <path
+        d="M50 12 C59 28 59 45 50 60 C41 45 41 28 50 12 Z"
+        stroke={color}
+        strokeWidth="3.5"
+      />
+      <path
+        d="M17 33 C34 33 47 43 50 60 C33 58 20 48 17 33 Z"
+        stroke={color}
+        strokeWidth="3.5"
+      />
+      <path
+        d="M83 33 C66 33 53 43 50 60 C67 58 80 48 83 33 Z"
+        stroke={color}
+        strokeWidth="3.5"
+      />
+      <path
+        d="M26 62 C37 53 46 53 50 60 C43 69 32 71 26 62 Z"
+        stroke={color}
+        strokeWidth="3.5"
+      />
+      <path
+        d="M74 62 C63 53 54 53 50 60 C57 69 68 71 74 62 Z"
+        stroke={color}
+        strokeWidth="3.5"
+      />
+    </svg>
+  );
+}
+
+/** Badge de submarca ("CABAÑAS"), equivalente al recuadro "POSADA" del manual. */
+function SubmarkBadge({
+  children,
+  compact = false,
+}: {
+  children: string;
+  compact?: boolean;
+}) {
+  return (
+    <span
+      className={compact ? "px-2 py-0.5 text-[0.65rem]" : "px-3 py-1 text-sm"}
+      style={{
+        background: "var(--color-forest)",
+        color: "var(--color-warm-white)",
+        fontFamily: "var(--font-display)",
+        letterSpacing: "0.08em",
+        borderRadius: "2px",
+        display: "inline-block",
+        width: "fit-content",
+        textTransform: "uppercase",
+      }}
+    >
+      {children}
+    </span>
+  );
+}
+
+/** Claim en arco ("SIERRAS DE CÓRDOBA"), como el "ALOJAMIENTO BOUTIQUE" del manual. Solo para el lockup completo (footer). */
+function ArcClaim({
+  text,
+  color = "var(--color-earth-light)",
+  size = 100,
+}: {
+  text: string;
+  color?: string;
+  size?: number;
+}) {
+  const pathId = "arc-claim-path";
+  return (
+    <svg width={size} height={size} viewBox="0 0 100 100" aria-hidden="true">
+      <path
+        id={pathId}
+        d="M 8 62 A 42 42 0 1 1 92 62"
+        fill="none"
+      />
+      <text
+        fill={color}
+        fontSize="9.5"
+        letterSpacing="1.5"
+        style={{ fontFamily: "var(--font-body)", fontWeight: 600 }}
+      >
+        <textPath href={`#${pathId}`} startOffset="50%" textAnchor="middle">
+          {text.toUpperCase()}
+        </textPath>
+      </text>
+    </svg>
+  );
+}
+
+/** Isologo Aldea Alentue — Cabañas. variant="compact" para el nav, "full" para el footer. */
+function Logo({
+  variant = "compact",
+  light = true,
+}: {
+  variant?: "compact" | "full";
+  light?: boolean;
+}) {
+  const wordmarkColor = light ? "var(--color-warm-white)" : "var(--color-bark)";
+  const iconColor = light ? "var(--color-warm-white)" : "var(--color-bark)";
+
+  if (variant === "full") {
+    return (
+      <div className="flex items-center gap-3">
+        <div className="relative flex items-center justify-center" style={{ width: 76, height: 76 }}>
+          <ArcClaim text="Sierras de Córdoba" size={76} />
+          <div className="absolute" style={{ right: -4 }}>
+            <LotusIcon color="var(--color-bark-light)" size={30} />
+          </div>
+        </div>
+        <div className="flex flex-col leading-none gap-2">
+          <span
+            className="text-3xl"
+            style={{ fontFamily: "var(--font-display)", color: wordmarkColor }}
+          >
+            Aldea Alentue
+          </span>
+          <SubmarkBadge>Cabañas</SubmarkBadge>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="flex items-center gap-2">
+      <LotusIcon color={iconColor} size={26} />
+      <div className="flex flex-col leading-none gap-1">
+        <span
+          className="text-xl"
+          style={{ fontFamily: "var(--font-display)", color: wordmarkColor }}
+        >
+          Aldea Alentue
+        </span>
+        <SubmarkBadge compact>Cabañas</SubmarkBadge>
+      </div>
+    </div>
+  );
+}
+
 function Nav() {
   const [open, setOpen] = useState(false);
   return (
@@ -70,21 +224,10 @@ function Nav() {
       />
       <a
         href="#inicio"
-        className="relative z-10 flex flex-col leading-none"
+        className="relative z-10"
         style={{ textDecoration: "none" }}
       >
-        <span
-          className="text-xs tracking-[0.25em] uppercase"
-          style={{ color: "var(--color-earth-light)", fontWeight: 500 }}
-        >
-          Sierras de Córdoba
-        </span>
-        <span
-          className="text-xl font-semibold"
-          style={{ fontFamily: "var(--font-display)", color: "var(--color-cream)" }}
-        >
-          Aldea Alentue
-        </span>
+        <Logo variant="compact" />
       </a>
 
       {/* Desktop links */}
@@ -1007,20 +1150,8 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
-            <div
-              className="text-xs tracking-[0.25em] uppercase mb-1"
-              style={{ color: "var(--color-earth-light)" }}
-            >
-              Sierras de Córdoba
-            </div>
-            <div
-              className="text-2xl mb-4"
-              style={{
-                fontFamily: "var(--font-display)",
-                color: "var(--color-cream)",
-              }}
-            >
-              Aldea Alentue
+            <div className="mb-4">
+              <Logo variant="full" />
             </div>
             <p
               className="text-sm leading-relaxed"

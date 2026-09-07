@@ -1,23 +1,59 @@
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Work+Sans:wght@300;400;500;600&display=swap');
+@font-face {
+  font-family: 'Glitten';
+  src: url('/fonts/Glitten-Regular.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Regular.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Italic.ttf') format('truetype');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-Medium.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Karla';
+  src: url('/fonts/Karla-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
 @import 'tailwindcss';
 
 @theme {
-  --color-cream: #f5f0e8;
-  --color-cream-dark: #ede6d6;
-  --color-stone: #a89880;
-  --color-stone-light: #d4c8b5;
-  --color-bark: #5c3d2e;
-  --color-bark-light: #7a5240;
-  --color-forest: #2d4a2d;
-  --color-forest-light: #3d6b3d;
-  --color-forest-muted: #4a6741;
-  --color-earth: #8b6914;
-  --color-earth-light: #c4952a;
-  --color-charcoal: #1e1e1a;
-  --color-warm-white: #faf8f3;
+  /* Paleta Aldea Alentue (Manual de marca, ago. 2024) */
+  --color-cream: #efe6e1;
+  --color-cream-dark: #e4d8cd;
+  --color-stone: #b1907d;
+  --color-stone-light: #eed3c2;
+  --color-bark: #8d1823;
+  --color-bark-light: #ef6684;
+  --color-forest: #00502d;
+  --color-forest-light: #558972;
+  --color-forest-muted: #8db2a0;
+  --color-earth: #8d1823;
+  --color-earth-light: #db5c74;
+  --color-charcoal: #261412;
+  --color-warm-white: #faf6f1;
 
-  --font-display: 'Lora', Georgia, serif;
-  --font-body: 'Work Sans', system-ui, sans-serif;
+  --font-display: 'Glitten', Georgia, serif;
+  --font-body: 'Karla', system-ui, sans-serif;
 }
 
 * {

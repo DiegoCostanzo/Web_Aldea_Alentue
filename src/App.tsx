@@ -142,23 +142,17 @@ function Logo({
 }: {
   variant?: "compact" | "full";
 }) {
-  const wordmarkSrc = `${import.meta.env.BASE_URL}logo/aldea-alentue-bordo.png`;
-  const wordmarkHeight = variant === "full" ? 34 : 22;
-  const iconBoxSize = variant === "full" ? 64 : 46;
-  const iconHeight = variant === "full" ? 26 : 19;
+  const wordmarkSrc = `${import.meta.env.BASE_URL}logo/alentue-bordo.png`;
+  const wordmarkHeight = variant === "full" ? 40 : 24;
+  const iconHeight = variant === "full" ? 44 : 26;
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-3">
       <div className="flex flex-col leading-none gap-2">
-        <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: wordmarkHeight, width: "auto" }} />
+        <img src={wordmarkSrc} alt="Alentue" style={{ height: wordmarkHeight, width: "auto" }} />
         <SubmarkBadge compact={variant !== "full"}>Cabañas</SubmarkBadge>
       </div>
-      <div className="relative flex items-center justify-center" style={{ width: iconBoxSize, height: iconBoxSize }}>
-        <ArcClaim text="Alojamiento" color="var(--color-forest)" size={iconBoxSize} />
-        <div className="absolute">
-          <LotusIcon light={false} height={iconHeight} />
-        </div>
-      </div>
+      <LotusIcon light={false} height={iconHeight} />
     </div>
   );
 }

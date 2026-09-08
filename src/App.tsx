@@ -271,7 +271,7 @@ function Hero() {
       className="relative min-h-screen flex items-end overflow-hidden"
     >
       <img
-        src="https://images.unsplash.com/photo-1568554628085-4eec26679e30?w=1800&h=1200&fit=crop&auto=format"
+        src={`${import.meta.env.BASE_URL}images/hero-sierras.jpg`}
         alt="Sierras de Córdoba — colinas verdes al atardecer"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: "center 40%" }}

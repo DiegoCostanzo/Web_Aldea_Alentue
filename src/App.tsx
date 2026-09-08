@@ -1119,7 +1119,7 @@ function Footer() {
       <div className="max-w-6xl mx-auto px-6 md:px-12">
         <div className="grid md:grid-cols-3 gap-10 mb-12">
           <div>
-            <div className="mb-4">
+            <div className="mb-8">
               <Logo variant="full" />
             </div>
             <p

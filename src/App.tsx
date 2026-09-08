@@ -62,7 +62,9 @@ function LotusIcon({
   light?: boolean;
   height?: number;
 }) {
-  const src = light ? "/logo/lotus-blanco.png" : "/logo/lotus-bordo.png";
+  const src = light
+    ? `${import.meta.env.BASE_URL}logo/lotus-blanco.png`
+    : `${import.meta.env.BASE_URL}logo/lotus-bordo.png`;
   return (
     <img
       src={src}
@@ -144,8 +146,8 @@ function Logo({
   light?: boolean;
 }) {
   const wordmarkSrc = light
-    ? "/logo/aldea-alentue-blanco.png"
-    : "/logo/aldea-alentue-bordo.png";
+    ? `${import.meta.env.BASE_URL}logo/aldea-alentue-blanco.png`
+    : `${import.meta.env.BASE_URL}logo/aldea-alentue-bordo.png`;
 
   if (variant === "full") {
     return (

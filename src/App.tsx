@@ -135,43 +135,29 @@ function ArcClaim({
 }
 
 /** Isologo Aldea Alentue — Cabañas. variant="compact" para el nav, "full" para el footer.
- *  El wordmark y el isotipo son el arte real del manual de marca (recortado de los
- *  archivos que pasó el cliente); solo "CABAÑAS" y el claim en arco se generan en código,
- *  porque son los dos elementos que cambian entre propiedades (Cabañas / Posada). */
+ *  Composición fiel al manual de marca: wordmark + submarca en bordó a la izquierda,
+ *  isotipo + claim en arco (verde) a la derecha. */
 function Logo({
   variant = "compact",
-  light = true,
 }: {
   variant?: "compact" | "full";
-  light?: boolean;
 }) {
-  const wordmarkSrc = light
-    ? `${import.meta.env.BASE_URL}logo/aldea-alentue-blanco.png`
-    : `${import.meta.env.BASE_URL}logo/aldea-alentue-bordo.png`;
-
-  if (variant === "full") {
-    return (
-      <div className="flex items-center gap-3">
-        <div className="relative flex items-center justify-center" style={{ width: 76, height: 76 }}>
-          <ArcClaim text="Sierras de Córdoba" size={76} />
-          <div className="absolute" style={{ right: -4 }}>
-            <LotusIcon light={light} height={30} />
-          </div>
-        </div>
-        <div className="flex flex-col leading-none gap-2">
-          <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: 34, width: "auto" }} />
-          <SubmarkBadge>Cabañas</SubmarkBadge>
-        </div>
-      </div>
-    );
-  }
+  const wordmarkSrc = `${import.meta.env.BASE_URL}logo/aldea-alentue-bordo.png`;
+  const wordmarkHeight = variant === "full" ? 34 : 22;
+  const iconBoxSize = variant === "full" ? 64 : 46;
+  const iconHeight = variant === "full" ? 26 : 19;
 
   return (
     <div className="flex items-center gap-2">
-      <LotusIcon light={light} height={26} />
-      <div className="flex flex-col leading-none gap-1">
-        <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: 22, width: "auto" }} />
-        <SubmarkBadge compact>Cabañas</SubmarkBadge>
+      <div className="flex flex-col leading-none gap-2">
+        <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: wordmarkHeight, width: "auto" }} />
+        <SubmarkBadge compact={variant !== "full"}>Cabañas</SubmarkBadge>
+      </div>
+      <div className="relative flex items-center justify-center" style={{ width: iconBoxSize, height: iconBoxSize }}>
+        <ArcClaim text="Alojamiento" color="var(--color-forest)" size={iconBoxSize} />
+        <div className="absolute">
+          <LotusIcon light={false} height={iconHeight} />
+        </div>
       </div>
     </div>
   );

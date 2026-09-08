@@ -54,49 +54,22 @@ const AMENITIES = [
   { icon: "🌙", label: "Cielo sin contaminación lumínica" },
 ];
 
-/** Isotipo flor de loto (5 pétalos, trazo simple) — según manual de marca Alentue. */
+/** Isotipo flor de loto — recortado del arte real del manual de marca Alentue. */
 function LotusIcon({
-  color = "var(--color-bark)",
-  size = 24,
+  light = true,
+  height = 24,
 }: {
-  color?: string;
-  size?: number;
+  light?: boolean;
+  height?: number;
 }) {
+  const src = light ? "/logo/lotus-blanco.png" : "/logo/lotus-bordo.png";
   return (
-    <svg
-      width={size}
-      height={size}
-      viewBox="0 0 100 100"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
+    <img
+      src={src}
+      alt=""
       aria-hidden="true"
-    >
-      <path
-        d="M50 12 C59 28 59 45 50 60 C41 45 41 28 50 12 Z"
-        stroke={color}
-        strokeWidth="3.5"
-      />
-      <path
-        d="M17 33 C34 33 47 43 50 60 C33 58 20 48 17 33 Z"
-        stroke={color}
-        strokeWidth="3.5"
-      />
-      <path
-        d="M83 33 C66 33 53 43 50 60 C67 58 80 48 83 33 Z"
-        stroke={color}
-        strokeWidth="3.5"
-      />
-      <path
-        d="M26 62 C37 53 46 53 50 60 C43 69 32 71 26 62 Z"
-        stroke={color}
-        strokeWidth="3.5"
-      />
-      <path
-        d="M74 62 C63 53 54 53 50 60 C57 69 68 71 74 62 Z"
-        stroke={color}
-        strokeWidth="3.5"
-      />
-    </svg>
+      style={{ height, width: "auto", display: "block" }}
+    />
   );
 }
 
@@ -159,7 +132,10 @@ function ArcClaim({
   );
 }
 
-/** Isologo Aldea Alentue — Cabañas. variant="compact" para el nav, "full" para el footer. */
+/** Isologo Aldea Alentue — Cabañas. variant="compact" para el nav, "full" para el footer.
+ *  El wordmark y el isotipo son el arte real del manual de marca (recortado de los
+ *  archivos que pasó el cliente); solo "CABAÑAS" y el claim en arco se generan en código,
+ *  porque son los dos elementos que cambian entre propiedades (Cabañas / Posada). */
 function Logo({
   variant = "compact",
   light = true,
@@ -167,8 +143,9 @@ function Logo({
   variant?: "compact" | "full";
   light?: boolean;
 }) {
-  const wordmarkColor = light ? "var(--color-warm-white)" : "var(--color-bark)";
-  const iconColor = light ? "var(--color-warm-white)" : "var(--color-bark)";
+  const wordmarkSrc = light
+    ? "/logo/aldea-alentue-blanco.png"
+    : "/logo/aldea-alentue-bordo.png";
 
   if (variant === "full") {
     return (
@@ -176,16 +153,11 @@ function Logo({
         <div className="relative flex items-center justify-center" style={{ width: 76, height: 76 }}>
           <ArcClaim text="Sierras de Córdoba" size={76} />
           <div className="absolute" style={{ right: -4 }}>
-            <LotusIcon color="var(--color-bark-light)" size={30} />
+            <LotusIcon light={light} height={30} />
           </div>
         </div>
         <div className="flex flex-col leading-none gap-2">
-          <span
-            className="text-3xl"
-            style={{ fontFamily: "var(--font-display)", color: wordmarkColor }}
-          >
-            Aldea Alentue
-          </span>
+          <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: 34, width: "auto" }} />
           <SubmarkBadge>Cabañas</SubmarkBadge>
         </div>
       </div>
@@ -194,14 +166,9 @@ function Logo({
 
   return (
     <div className="flex items-center gap-2">
-      <LotusIcon color={iconColor} size={26} />
+      <LotusIcon light={light} height={26} />
       <div className="flex flex-col leading-none gap-1">
-        <span
-          className="text-xl"
-          style={{ fontFamily: "var(--font-display)", color: wordmarkColor }}
-        >
-          Aldea Alentue
-        </span>
+        <img src={wordmarkSrc} alt="Aldea Alentue" style={{ height: 22, width: "auto" }} />
         <SubmarkBadge compact>Cabañas</SubmarkBadge>
       </div>
     </div>

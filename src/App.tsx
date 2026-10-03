@@ -124,6 +124,11 @@ const INSTALACIONES = [
 
 const WHATSAPP = "5493546549909";
 
+const DIRECCION = "Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba";
+const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+  `Aldea Alentue, ${DIRECCION}`,
+)}`;
+
 const REDES = [
   { label: "Instagram", href: "https://www.instagram.com/aldeaalentue/" },
   { label: "Facebook", href: "https://www.facebook.com/aldeaalentuesantarosa/" },
@@ -1085,9 +1090,15 @@ function ReservasSection() {
                 >
                   Ubicación
                 </div>
-                <span className="text-sm" style={{ color: "var(--color-bark)" }}>
-                  Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba
-                </span>
+                <a
+                  href={MAPS_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm"
+                  style={{ color: "var(--color-bark)", textDecoration: "none" }}
+                >
+                  {DIRECCION}
+                </a>
               </div>
             </div>
           </div>
@@ -1394,7 +1405,14 @@ function Footer() {
               Contacto
             </div>
             <div className="flex flex-col gap-3 text-sm" style={{ color: "var(--color-stone)" }}>
-              <span>📍 Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba</span>
+              <a
+                href={MAPS_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--color-stone)", textDecoration: "none" }}
+              >
+                📍 {DIRECCION}
+              </a>
               <a
                 href="mailto:alentuereservas@gmail.com"
                 style={{ color: "var(--color-stone)", textDecoration: "none" }}

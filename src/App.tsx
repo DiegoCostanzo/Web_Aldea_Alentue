@@ -20,7 +20,7 @@ const FOTOS_MUESTRA = [
   },
 ];
 
-// Superficie, precio y descripción son datos de muestra hasta tener los reales.
+// Superficie y precio son datos de muestra hasta tener los reales.
 const GRUPOS = [
   {
     label: "Cabañas para 4",
@@ -28,7 +28,15 @@ const GRUPOS = [
     capacity: "4 personas",
     size: "60 m²",
     price: "$45.000 / noche",
-    desc: "Cabaña para cuatro personas, rodeada del bosque serrano.",
+    desc: "Un refugio pensado para vos y tu familia o amigos, con todas las comodidades para descansar en las sierras.",
+    servicios: [
+      "Desayuno incluido",
+      "Ropa blanca",
+      "Aire frío/calor",
+      "Calefacción en comedor y habitación",
+      "Habitación matrimonial + cucheta",
+      "Cochera con asador individual",
+    ],
     nombres: ["Cuyen", "Hueful", "Mapu"],
   },
   {
@@ -37,7 +45,15 @@ const GRUPOS = [
     capacity: "4 personas + 1 cama adicional",
     size: "70 m²",
     price: "$52.000 / noche",
-    desc: "Cabaña para cuatro personas, con una cama adicional para un quinto huésped.",
+    desc: "Un refugio para cuatro, con lugar para uno más: ideal para la familia o los amigos que quieren compartir las sierras.",
+    servicios: [
+      "Desayuno incluido",
+      "Ropa blanca",
+      "Aire frío/calor",
+      "Calefacción en comedor y habitación",
+      "Cama adicional para un quinto huésped",
+      "Cochera con asador individual",
+    ],
     nombres: ["Alen", "Mahuida"],
   },
   {
@@ -46,7 +62,15 @@ const GRUPOS = [
     capacity: "6 personas",
     size: "95 m²",
     price: "$70.000 / noche",
-    desc: "Nuestra cabaña más amplia, pensada para familias o grupos de hasta seis personas.",
+    desc: "Nuestra cabaña más amplia, perfecta para disfrutar momentos inolvidables con tu familia o amigos.",
+    servicios: [
+      "Desayuno incluido",
+      "Ropa blanca",
+      "Aire frío/calor",
+      "Hogar a leña",
+      "Dos habitaciones, cada una con calefacción",
+      "Cochera con asador individual",
+    ],
     nombres: ["Lihue"],
   },
   {
@@ -55,10 +79,19 @@ const GRUPOS = [
     capacity: "2 a 3 personas",
     size: "35 m²",
     price: "$28.000 / noche",
-    desc: "Monoambiente para dos o tres personas, ideal para una escapada en pareja.",
+    desc: "Un lugar encantador para una escapada en las sierras. Todo lo que necesitás para una estadía inolvidable.",
+    servicios: [
+      "Desayuno box en tu monoambiente",
+      "Ropa blanca: sábanas, toallas y toallones",
+      "Calefacción y aire acondicionado",
+      "Cochera con asador individual",
+    ],
     nombres: ["Antu", "Huilen", "Mahuen", "Alun", "Maiten", "Lilen", "Aime"],
   },
 ];
+
+const COMPLEJO =
+  "En el complejo: piscina climatizada todo el año y un parque de más de 6.800 m² con juegos para los más chicos.";
 
 const CABANAS = GRUPOS.flatMap((g) =>
   g.nombres.map((nombre) => ({
@@ -68,6 +101,7 @@ const CABANAS = GRUPOS.flatMap((g) =>
     tipo: g.tipo,
     capacity: g.capacity,
     desc: g.desc,
+    servicios: g.servicios,
     size: g.size,
     price: g.price,
     fotos: FOTOS_MUESTRA,
@@ -537,10 +571,43 @@ function CabanasSection() {
                 {cab.name}
               </h3>
               <p
-                className="text-base leading-relaxed mb-6"
+                className="text-base leading-relaxed mb-5"
                 style={{ color: "var(--color-bark)", fontWeight: 300 }}
               >
                 {cab.desc}
+              </p>
+              <span
+                className="block text-xs uppercase tracking-wider mb-2"
+                style={{ color: "var(--color-stone)" }}
+              >
+                Incluye
+              </span>
+              <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-1.5 mb-4">
+                {cab.servicios.map((s) => (
+                  <li
+                    key={s}
+                    className="flex items-start gap-2 text-sm leading-snug"
+                    style={{ color: "var(--color-charcoal)" }}
+                  >
+                    <span
+                      aria-hidden
+                      className="shrink-0 mt-[0.45em]"
+                      style={{
+                        width: 5,
+                        height: 5,
+                        background: "var(--color-forest)",
+                        transform: "rotate(45deg)",
+                      }}
+                    />
+                    {s}
+                  </li>
+                ))}
+              </ul>
+              <p
+                className="text-xs leading-relaxed mb-6"
+                style={{ color: "var(--color-forest)" }}
+              >
+                {COMPLEJO}
               </p>
               <div className="flex gap-6 mb-8">
                 <div className="flex flex-col">

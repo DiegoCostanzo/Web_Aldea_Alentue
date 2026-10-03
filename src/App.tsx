@@ -383,7 +383,7 @@ function Hero() {
           style={{ color: "var(--color-stone-light)", fontWeight: 300 }}
         >
           Cabañas de madera y piedra en las Sierras de Córdoba, rodeadas de
-          bosque nativo y el sonido del arroyo. Desconectate. Respirá.
+          bosque nativo y a pasos del río. Desconectate. Respirá.
         </p>
         <div className="flex flex-wrap gap-4">
           <a
@@ -438,7 +438,7 @@ function Hero() {
         >
           {[
             { n: String(CABANAS.length), label: "Cabañas" },
-            { n: "1.200", label: "msnm" },
+            { n: "600", label: "msnm" },
             { n: "6+", label: "años" },
           ].map(({ n, label }) => (
             <div key={label} className="flex flex-col">
@@ -738,9 +738,9 @@ function EntornoSection() {
               className="text-base leading-relaxed mb-6"
               style={{ color: "var(--color-stone-light)", fontWeight: 300 }}
             >
-              Aldea Alentue está ubicada en las Sierras Grandes de Córdoba, a
-              1.200 metros sobre el nivel del mar. El predio limita con un
-              arroyo de aguas cristalinas y está rodeado de bosque nativo de
+              Aldea Alentue está ubicada en Santa Rosa de Calamuchita, en las
+              sierras de Córdoba, a 600 metros sobre el nivel del mar. Muy cerca
+              corre el río, y el predio está rodeado de bosque nativo de
               molle, espinillo, tabaquillo y palo blanco.
             </p>
             <p

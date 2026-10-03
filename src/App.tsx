@@ -1,47 +1,78 @@
 import { useState } from "react";
 
-const CABANAS = [
+// Fotos de muestra: se comparten entre todas las unidades hasta tener las reales.
+const FOTOS_MUESTRA = [
   {
-    name: "Cabaña El Molle",
-    desc: "Para dos personas, con vista directa al arroyo y deck privado entre los árboles.",
-    capacity: "2 personas",
-    size: "45 m²",
-    price: "$28.000 / noche",
-    img: "https://images.unsplash.com/photo-1570793005386-840846445fed?w=800&h=600&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1570793005386-840846445fed?w=800&h=600&fit=crop&auto=format",
     alt: "Cabaña de madera entre árboles del bosque",
-    tag: "Romántica",
   },
   {
-    name: "Cabaña Los Espinillos",
-    desc: "Amplia cabaña familiar rodeada de espinillos con hogar a leña y cocina equipada.",
-    capacity: "4 personas",
-    size: "72 m²",
-    price: "$45.000 / noche",
-    img: "https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?w=800&h=600&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1631630259742-c0f0b17c6c10?w=800&h=600&fit=crop&auto=format",
     alt: "Interior acogedor con estufa y sillones de madera",
-    tag: "Familiar",
   },
   {
-    name: "Cabaña La Vertiente",
-    desc: "Nuestra cabaña premium con bañera de inmersión exterior, quincho y vista panorámica a las sierras.",
-    capacity: "2–4 personas",
-    size: "90 m²",
-    price: "$68.000 / noche",
-    img: "https://images.unsplash.com/photo-1631941392209-70cad44ecfb7?w=800&h=600&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1631941392209-70cad44ecfb7?w=800&h=600&fit=crop&auto=format",
     alt: "Living con chimenea y ventanal al monte",
-    tag: "Premium",
   },
   {
-    name: "Cabaña Piedra Blanca",
-    desc: "Construida sobre roca viva, con materiales naturales y una pequeña pileta privada.",
-    capacity: "4–6 personas",
-    size: "110 m²",
-    price: "$85.000 / noche",
-    img: "https://images.unsplash.com/photo-1631756964162-25c8c07579b5?w=800&h=600&fit=crop&auto=format",
+    src: "https://images.unsplash.com/photo-1631756964162-25c8c07579b5?w=800&h=600&fit=crop&auto=format",
     alt: "Salón amplio con ventanal a la naturaleza",
-    tag: "Grupo",
   },
 ];
+
+// Superficie, precio y descripción son datos de muestra hasta tener los reales.
+const GRUPOS = [
+  {
+    label: "Cabañas para 4",
+    tipo: "Cabaña",
+    capacity: "4 personas",
+    size: "60 m²",
+    price: "$45.000 / noche",
+    desc: "Cabaña para cuatro personas, rodeada del bosque serrano.",
+    nombres: ["Cuyen", "Hueful", "Mapu"],
+  },
+  {
+    label: "Cabañas para 4 + 1",
+    tipo: "Cabaña",
+    capacity: "4 personas + 1 cama adicional",
+    size: "70 m²",
+    price: "$52.000 / noche",
+    desc: "Cabaña para cuatro personas, con una cama adicional para un quinto huésped.",
+    nombres: ["Alen", "Mahuida"],
+  },
+  {
+    label: "Cabaña para 6",
+    tipo: "Cabaña",
+    capacity: "6 personas",
+    size: "95 m²",
+    price: "$70.000 / noche",
+    desc: "Nuestra cabaña más amplia, pensada para familias o grupos de hasta seis personas.",
+    nombres: ["Lihue"],
+  },
+  {
+    label: "Monoambientes para 2/3",
+    tipo: "Monoambiente",
+    capacity: "2 a 3 personas",
+    size: "35 m²",
+    price: "$28.000 / noche",
+    desc: "Monoambiente para dos o tres personas, ideal para una escapada en pareja.",
+    nombres: ["Antu", "Huilen", "Mahuen", "Alun", "Maiten", "Lilen", "Aime"],
+  },
+];
+
+const CABANAS = GRUPOS.flatMap((g) =>
+  g.nombres.map((nombre) => ({
+    nombre,
+    name: `${g.tipo} ${nombre}`,
+    grupo: g.label,
+    tipo: g.tipo,
+    capacity: g.capacity,
+    desc: g.desc,
+    size: g.size,
+    price: g.price,
+    fotos: FOTOS_MUESTRA,
+  })),
+);
 
 const AMENITIES = [
   { icon: "🔥", label: "Hogar a leña" },
@@ -372,7 +403,7 @@ function Hero() {
           style={{ borderTop: "1px solid rgba(245,240,232,0.15)" }}
         >
           {[
-            { n: "4", label: "Cabañas" },
+            { n: String(CABANAS.length), label: "Cabañas" },
             { n: "1.200", label: "msnm" },
             { n: "6+", label: "años" },
           ].map(({ n, label }) => (
@@ -402,7 +433,14 @@ function Hero() {
 
 function CabanasSection() {
   const [active, setActive] = useState(0);
+  const [foto, setFoto] = useState(0);
   const cab = CABANAS[active];
+  const fotoActual = cab.fotos[foto];
+
+  const elegir = (i: number) => {
+    setActive(i);
+    setFoto(0);
+  };
 
   return (
     <section
@@ -441,7 +479,7 @@ function CabanasSection() {
           {CABANAS.map((c, i) => (
             <button
               key={c.name}
-              onClick={() => setActive(i)}
+              onClick={() => elegir(i)}
               className="px-4 py-2 text-sm font-medium transition-all duration-200"
               style={{
                 borderRadius: "2px",
@@ -452,7 +490,7 @@ function CabanasSection() {
                 cursor: "pointer",
               }}
             >
-              {c.name.replace("Cabaña ", "")}
+              {c.nombre}
             </button>
           ))}
         </div>
@@ -468,9 +506,9 @@ function CabanasSection() {
           {/* Image */}
           <div className="relative h-72 md:h-auto overflow-hidden" style={{ minHeight: 320, background: "var(--color-stone-light)" }}>
             <img
-              key={cab.img}
-              src={cab.img}
-              alt={cab.alt}
+              key={fotoActual.src}
+              src={fotoActual.src}
+              alt={fotoActual.alt}
               className="w-full h-full object-cover transition-opacity duration-500"
               style={{ opacity: 1 }}
             />
@@ -482,7 +520,7 @@ function CabanasSection() {
                 borderRadius: "2px",
               }}
             >
-              {cab.tag}
+              {cab.grupo}
             </div>
           </div>
 
@@ -576,27 +614,27 @@ function CabanasSection() {
           </div>
         </div>
 
-        {/* Small thumbnails */}
+        {/* Galería de la unidad activa */}
         <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mt-4">
-          {CABANAS.map((c, i) => (
+          {cab.fotos.map((f, i) => (
             <button
-              key={c.name}
-              onClick={() => setActive(i)}
+              key={f.src}
+              onClick={() => setFoto(i)}
               className="relative overflow-hidden transition-all duration-200"
               style={{
                 height: 100,
                 borderRadius: "2px",
-                outline: active === i ? "2px solid var(--color-forest)" : "none",
+                outline: foto === i ? "2px solid var(--color-forest)" : "none",
                 outlineOffset: 2,
                 background: "var(--color-stone-light)",
                 cursor: "pointer",
               }}
             >
               <img
-                src={c.img}
-                alt={c.alt}
+                src={f.src}
+                alt={f.alt}
                 className="w-full h-full object-cover"
-                style={{ opacity: active === i ? 1 : 0.65, transition: "opacity 0.2s" }}
+                style={{ opacity: foto === i ? 1 : 0.65, transition: "opacity 0.2s" }}
               />
             </button>
           ))}
@@ -974,10 +1012,14 @@ function ReservasSection() {
                       }
                     >
                       <option value="">Sin preferencia</option>
-                      {CABANAS.map((c) => (
-                        <option key={c.name} value={c.name}>
-                          {c.name}
-                        </option>
+                      {GRUPOS.map((g) => (
+                        <optgroup key={g.label} label={g.label}>
+                          {CABANAS.filter((c) => c.grupo === g.label).map((c) => (
+                            <option key={c.name} value={c.name}>
+                              {c.name}
+                            </option>
+                          ))}
+                        </optgroup>
                       ))}
                     </select>
                   </div>

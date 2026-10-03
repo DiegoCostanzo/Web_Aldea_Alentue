@@ -122,6 +122,13 @@ const INSTALACIONES = [
   { titulo: "Cochera con asador", desc: "Cada unidad tiene su cochera y asador individual." },
 ];
 
+const WHATSAPP = "5493546549909";
+
+const REDES = [
+  { label: "Instagram", href: "https://www.instagram.com/aldeaalentue/" },
+  { label: "Facebook", href: "https://www.facebook.com/aldeaalentuesantarosa/" },
+];
+
 const AMENITIES = [
   { icon: "🔥", label: "Hogar a leña" },
   { icon: "🏊", label: "Piscina climatizada" },
@@ -938,8 +945,28 @@ function ReservasSection() {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
   ) => setForm({ ...form, [e.target.name]: e.target.value });
 
+  // La consulta se envía armando un mensaje de WhatsApp con los datos del formulario.
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const fecha = (f: string) => f.split("-").reverse().join("/");
+    const lineas = [
+      "Hola! Quiero consultar por una reserva en Aldea Alentue.",
+      "",
+      `Nombre: ${form.nombre}`,
+      `Email: ${form.email}`,
+      form.telefono ? `Teléfono: ${form.telefono}` : null,
+      `Cabaña: ${form.cabana || "Sin preferencia"}`,
+      `Llegada: ${fecha(form.llegada)}`,
+      `Salida: ${fecha(form.salida)}`,
+      `Personas: ${form.personas}`,
+      form.mensaje ? `Consulta: ${form.mensaje}` : null,
+    ].filter((l) => l !== null);
+    const texto = lineas.join("\n");
+    window.open(
+      `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(texto)}`,
+      "_blank",
+      "noopener",
+    );
     setSent(true);
   };
 
@@ -1013,7 +1040,9 @@ function ReservasSection() {
                   WhatsApp
                 </div>
                 <a
-                  href="https://wa.me/5493546549909"
+                  href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
                   className="text-sm font-medium"
                   style={{
                     color: "var(--color-forest)",
@@ -1086,8 +1115,8 @@ function ReservasSection() {
                   className="text-sm leading-relaxed max-w-xs"
                   style={{ color: "var(--color-bark)", fontWeight: 300 }}
                 >
-                  Recibimos tu consulta y nos comunicaremos con vos en las
-                  próximas horas para confirmar tu reserva en Aldea Alentue.
+                  Te abrimos WhatsApp con tu consulta lista. Enviá el mensaje y
+                  te respondemos a la brevedad para confirmar tu reserva.
                 </p>
                 <button
                   onClick={() => setSent(false)}
@@ -1373,24 +1402,30 @@ function Footer() {
                 ✉️ alentuereservas@gmail.com
               </a>
               <a
-                href="https://wa.me/5493546549909"
+                href={`https://wa.me/${WHATSAPP}`}
+                target="_blank"
+                rel="noopener noreferrer"
                 style={{ color: "var(--color-stone)", textDecoration: "none" }}
               >
                 📱 +54 9 3546 54-9909
               </a>
               <div className="flex gap-3 mt-2">
-                {["Instagram", "Facebook"].map((red) => (
-                  <span
-                    key={red}
+                {REDES.map((red) => (
+                  <a
+                    key={red.label}
+                    href={red.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     className="text-xs uppercase tracking-wide px-3 py-1"
                     style={{
                       border: "1px solid var(--color-stone)",
                       borderRadius: "2px",
                       color: "var(--color-stone)",
+                      textDecoration: "none",
                     }}
                   >
-                    {red}
-                  </span>
+                    {red.label}
+                  </a>
                 ))}
               </div>
             </div>

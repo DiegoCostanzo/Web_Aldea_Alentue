@@ -108,6 +108,20 @@ const CABANAS = GRUPOS.flatMap((g) =>
   })),
 );
 
+const FOTOS_COMPLEJO = [
+  { file: "piscina-hidromasaje.jpg", alt: "Piscina climatizada cubierta con sector de hidromasaje" },
+  { file: "piscina-escalera.jpg", alt: "Piscina cubierta vidriada con vista al parque" },
+  { file: "piscina-agua.jpg", alt: "Agua de la piscina climatizada bajo el techo de madera" },
+  { file: "solarium.jpg", alt: "Solárium con reposeras junto a la piscina y las sierras de fondo" },
+];
+
+const INSTALACIONES = [
+  { titulo: "Piscina climatizada", desc: "Cubierta, vidriada y abierta todo el año." },
+  { titulo: "Solárium", desc: "Reposeras al sol con vista a las sierras." },
+  { titulo: "Parque", desc: "Más de 6.800 m² con juegos para los más chicos." },
+  { titulo: "Cochera con asador", desc: "Cada unidad tiene su cochera y asador individual." },
+];
+
 const AMENITIES = [
   { icon: "🔥", label: "Hogar a leña" },
   { icon: "🏊", label: "Piscina climatizada" },
@@ -246,7 +260,7 @@ function Nav() {
 
       {/* Desktop links */}
       <div className="relative z-10 hidden md:flex items-center gap-8">
-        {["Cabañas", "Entorno", "Reservas", "Contacto"].map((item) => (
+        {["Cabañas", "Complejo", "Entorno", "Reservas", "Contacto"].map((item) => (
           <a
             key={item}
             href={`#${item.toLowerCase()}`}
@@ -309,7 +323,7 @@ function Nav() {
           style={{ background: "var(--color-charcoal)" }}
           onClick={() => setOpen(false)}
         >
-          {["Cabañas", "Entorno", "Reservas", "Contacto"].map((item) => (
+          {["Cabañas", "Complejo", "Entorno", "Reservas", "Contacto"].map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
@@ -704,6 +718,97 @@ function CabanasSection() {
                 style={{ opacity: foto === i ? 1 : 0.65, transition: "opacity 0.2s" }}
               />
             </button>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function ComplejoSection() {
+  const foto = (f: (typeof FOTOS_COMPLEJO)[number], className: string) => (
+    <div
+      className={`relative overflow-hidden ${className}`}
+      style={{ borderRadius: "4px", background: "var(--color-stone-light)" }}
+    >
+      <img
+        src={`${import.meta.env.BASE_URL}images/complejo/${f.file}`}
+        alt={f.alt}
+        loading="lazy"
+        className="w-full h-full object-cover"
+      />
+    </div>
+  );
+
+  return (
+    <section
+      id="complejo"
+      className="py-20 md:py-32"
+      style={{ background: "var(--color-cream)" }}
+    >
+      <div className="max-w-6xl mx-auto px-6 md:px-12">
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+          <div>
+            <span
+              className="text-xs tracking-[0.3em] uppercase"
+              style={{ color: "var(--color-earth)" }}
+            >
+              El complejo
+            </span>
+            <h2
+              className="text-4xl md:text-5xl mt-2"
+              style={{ color: "var(--color-charcoal)" }}
+            >
+              Calma &amp; Sierras
+            </h2>
+          </div>
+          <p
+            className="md:max-w-xs text-sm leading-relaxed"
+            style={{ color: "var(--color-bark)", fontWeight: 300 }}
+          >
+            Además de tu cabaña, en Alentue te esperan espacios para disfrutar
+            en cualquier época del año.
+          </p>
+        </div>
+
+        {/* Mosaico de fotos */}
+        <div className="grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3 md:h-[480px]">
+          {foto(FOTOS_COMPLEJO[0], "col-span-2 md:row-span-2 h-64 md:h-auto")}
+          {foto(FOTOS_COMPLEJO[1], "col-span-2 h-48 md:h-auto")}
+          {foto(FOTOS_COMPLEJO[2], "h-36 md:h-auto")}
+          {foto(FOTOS_COMPLEJO[3], "h-36 md:h-auto")}
+        </div>
+
+        {/* Instalaciones */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-4 gap-8 mt-12">
+          {INSTALACIONES.map((it) => (
+            <div key={it.titulo}>
+              <div className="flex items-center gap-2 mb-2">
+                <span
+                  aria-hidden
+                  className="shrink-0"
+                  style={{
+                    width: 6,
+                    height: 6,
+                    background: "var(--color-forest)",
+                    transform: "rotate(45deg)",
+                  }}
+                />
+                <span
+                  className="text-sm font-medium"
+                  style={{ color: "var(--color-charcoal)" }}
+                >
+                  {it.titulo}
+                </span>
+              </div>
+              <p
+                className="text-sm leading-relaxed"
+                style={{ color: "var(--color-bark)", fontWeight: 300 }}
+              >
+                {it.desc}
+              </p>
+            </div>
           ))}
         </div>
       </div>
@@ -1227,7 +1332,7 @@ function Footer() {
               Navegación
             </div>
             <div className="flex flex-col gap-2">
-              {["Inicio", "Cabañas", "Entorno", "Reservas", "Contacto"].map(
+              {["Inicio", "Cabañas", "Complejo", "Entorno", "Reservas", "Contacto"].map(
                 (item) => (
                   <a
                     key={item}
@@ -1315,6 +1420,7 @@ export default function App() {
       <Nav />
       <Hero />
       <CabanasSection />
+      <ComplejoSection />
       <EntornoSection />
       <ReservasSection />
       <Footer />

@@ -110,7 +110,7 @@ const CABANAS = GRUPOS.flatMap((g) =>
 
 const AMENITIES = [
   { icon: "🔥", label: "Hogar a leña" },
-  { icon: "🏊", label: "Pileta privada" },
+  { icon: "🏊", label: "Piscina climatizada" },
   { icon: "🌿", label: "Jardín nativo" },
   { icon: "🚿", label: "Ducha de lluvia" },
   { icon: "🍳", label: "Cocina equipada" },
@@ -358,7 +358,7 @@ function Hero() {
           className="text-xs tracking-[0.3em] uppercase"
           style={{ color: "var(--color-stone-light)", opacity: 0.7 }}
         >
-          Villa Yacanto · Córdoba · Argentina
+          Santa Rosa de Calamuchita · Córdoba · Argentina
         </span>
         <div
           className="w-px h-16"
@@ -952,7 +952,7 @@ function ReservasSection() {
                   Ubicación
                 </div>
                 <span className="text-sm" style={{ color: "var(--color-bark)" }}>
-                  Villa Yacanto, Sierras Grandes, Córdoba
+                  Santa Rosa de Calamuchita, Córdoba
                 </span>
               </div>
             </div>
@@ -1215,8 +1215,8 @@ function Footer() {
               className="text-sm leading-relaxed"
               style={{ color: "var(--color-stone)", fontWeight: 300 }}
             >
-              Cabañas de montaña en Villa Yacanto, entre el bosque nativo y el
-              arroyo de las Sierras Grandes de Córdoba.
+              Cabañas en Santa Rosa de Calamuchita, entre el bosque nativo y las
+              sierras de Córdoba.
             </p>
           </div>
           <div>
@@ -1260,7 +1260,7 @@ function Footer() {
               Contacto
             </div>
             <div className="flex flex-col gap-3 text-sm" style={{ color: "var(--color-stone)" }}>
-              <span>📍 Villa Yacanto, Calamuchita, Córdoba</span>
+              <span>📍 Santa Rosa de Calamuchita, Córdoba</span>
               <a
                 href="mailto:hola@aldeaalentue.com"
                 style={{ color: "var(--color-stone)", textDecoration: "none" }}

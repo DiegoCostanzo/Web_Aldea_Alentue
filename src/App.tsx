@@ -1013,14 +1013,14 @@ function ReservasSection() {
                   WhatsApp
                 </div>
                 <a
-                  href="https://wa.me/5493511234567"
+                  href="https://wa.me/5493546549909"
                   className="text-sm font-medium"
                   style={{
                     color: "var(--color-forest)",
                     textDecoration: "none",
                   }}
                 >
-                  +54 9 351 123-4567
+                  +54 9 3546 54-9909
                 </a>
               </div>
               <div
@@ -1035,14 +1035,14 @@ function ReservasSection() {
                   Email
                 </div>
                 <a
-                  href="mailto:hola@aldeaalentue.com"
+                  href="mailto:alentuereservas@gmail.com"
                   className="text-sm font-medium"
                   style={{
                     color: "var(--color-forest)",
                     textDecoration: "none",
                   }}
                 >
-                  hola@aldeaalentue.com
+                  alentuereservas@gmail.com
                 </a>
               </div>
               <div
@@ -1057,7 +1057,7 @@ function ReservasSection() {
                   Ubicación
                 </div>
                 <span className="text-sm" style={{ color: "var(--color-bark)" }}>
-                  Santa Rosa de Calamuchita, Córdoba
+                  Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba
                 </span>
               </div>
             </div>
@@ -1365,18 +1365,18 @@ function Footer() {
               Contacto
             </div>
             <div className="flex flex-col gap-3 text-sm" style={{ color: "var(--color-stone)" }}>
-              <span>📍 Santa Rosa de Calamuchita, Córdoba</span>
+              <span>📍 Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba</span>
               <a
-                href="mailto:hola@aldeaalentue.com"
+                href="mailto:alentuereservas@gmail.com"
                 style={{ color: "var(--color-stone)", textDecoration: "none" }}
               >
-                ✉️ hola@aldeaalentue.com
+                ✉️ alentuereservas@gmail.com
               </a>
               <a
-                href="https://wa.me/5493511234567"
+                href="https://wa.me/5493546549909"
                 style={{ color: "var(--color-stone)", textDecoration: "none" }}
               >
-                📱 +54 9 351 123-4567
+                📱 +54 9 3546 54-9909
               </a>
               <div className="flex gap-3 mt-2">
                 {["Instagram", "Facebook"].map((red) => (

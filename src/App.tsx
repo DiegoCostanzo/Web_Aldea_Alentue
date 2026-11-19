@@ -401,11 +401,11 @@ function Hero() {
           className="text-5xl md:text-7xl lg:text-8xl leading-none mb-6"
           style={{ color: "var(--color-cream)" }}
         >
-          Donde el
+          Donde las
           <br />
-          <em>monte</em> te
+          <em>sierras</em> te
           <br />
-          recibe.
+          reciben.
         </h1>
         <p
           className="text-lg md:text-xl max-w-lg mb-10 leading-relaxed"

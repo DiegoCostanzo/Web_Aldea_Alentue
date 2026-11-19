@@ -132,10 +132,10 @@ const REDES = [
 ];
 
 const AMENITIES = [
-  { icon: "🚌", label: "Cerca de la terminal" },
+  { icon: "🚌", label: "A pasos de la terminal" },
   { icon: "🏊", label: "Piscina climatizada" },
-  { icon: "🌳", label: "Parque" },
-  { icon: "🚿", label: "Ducha de lluvia" },
+  { icon: "🌳", label: "Parque de más de 6.800 m²" },
+  { icon: "🛝", label: "Juegos para niños" },
   { icon: "🍳", label: "Cocina equipada" },
   { icon: "🌄", label: "Vista a las sierras" },
   { icon: "🐦", label: "Senderos en la zona" },

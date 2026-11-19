@@ -270,7 +270,7 @@ function Nav() {
         className="relative z-10"
         style={{ textDecoration: "none" }}
       >
-        <Logo variant="compact" />
+        <Logo variant="full" />
       </a>
 
       {/* Desktop links */}

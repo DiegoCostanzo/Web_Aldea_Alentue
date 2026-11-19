@@ -20,6 +20,16 @@ const FOTOS_MUESTRA = [
   },
 ];
 
+const FOTOS_MONOAMBIENTE = [
+  { file: "interior.jpg", alt: "Monoambiente con cama matrimonial, cama individual y mesa" },
+  { file: "interior-huesped.jpg", alt: "Huésped descansando en el monoambiente" },
+  { file: "vista-parque.jpg", alt: "Vista desde la ventana del monoambiente al parque" },
+  { file: "vista-sierras.jpg", alt: "Las sierras desde la ventana del monoambiente" },
+].map((f) => ({
+  src: `${import.meta.env.BASE_URL}images/monoambiente/${f.file}`,
+  alt: f.alt,
+}));
+
 const GRUPOS = [
   {
     label: "Cabañas para 4",
@@ -83,6 +93,7 @@ const GRUPOS = [
       "Cochera con asador individual",
     ],
     nombres: ["Antu", "Huilen", "Mahuen", "Alun", "Maiten", "Lilen", "Aime"],
+    fotos: FOTOS_MONOAMBIENTE,
   },
 ];
 
@@ -98,12 +109,12 @@ const CABANAS = GRUPOS.flatMap((g) =>
     capacity: g.capacity,
     desc: g.desc,
     servicios: g.servicios,
-    fotos: FOTOS_MUESTRA,
+    fotos: g.fotos ?? FOTOS_MUESTRA,
   })),
 );
 
 const FOTOS_COMPLEJO = [
-  { file: "piscina-mate.jpg", alt: "Mate en el borde de la piscina climatizada cubierta" },
+  { file: "piscina-mate.jpg", alt: "Mates en el borde de la piscina climatizada cubierta" },
   { file: "parque-juegos.jpg", alt: "Parque con juegos para chicos entre las cabañas y las sierras" },
   { file: "solarium-reposera.jpg", alt: "Reposera al sol en el solárium junto al parque" },
   { file: "desayuno.jpg", alt: "Desayuno con medialunas y facturas servido en la cabaña" },

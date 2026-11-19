@@ -21,9 +21,9 @@ const FOTOS_MUESTRA = [
 ];
 
 const FOTOS_MONOAMBIENTE = [
+  { file: "frente.jpg", alt: "Frente del monoambiente con galería, mesa y asador" },
   { file: "interior.jpg", alt: "Monoambiente con cama matrimonial, cama individual y mesa" },
   { file: "interior-huesped.jpg", alt: "Huésped descansando en el monoambiente" },
-  { file: "vista-parque.jpg", alt: "Vista desde la ventana del monoambiente al parque" },
   { file: "vista-sierras.jpg", alt: "Las sierras desde la ventana del monoambiente" },
 ].map((f) => ({
   src: `${import.meta.env.BASE_URL}images/monoambiente/${f.file}`,

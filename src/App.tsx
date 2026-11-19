@@ -130,6 +130,8 @@ const INSTALACIONES = [
 
 const WHATSAPP = "5493546549909";
 
+const RESERVA_ONLINE_URL = "https://us2.cloudbeds.com/es/reservation/giXs2j?currency=ars";
+
 const DIRECCION = "Av. Intendente Ángel Llanos 253, Santa Rosa de Calamuchita, Córdoba";
 const MAPS_URL = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
   `Aldea Alentue, ${DIRECCION}`,
@@ -1345,6 +1347,25 @@ function ReservasSection() {
                 </button>
               </form>
             )}
+            <p
+              className="text-sm text-center mt-6"
+              style={{ color: "var(--color-bark)", fontWeight: 300 }}
+            >
+              ¿Ya sabés tus fechas?{" "}
+              <a
+                href={RESERVA_ONLINE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="font-medium"
+                style={{
+                  color: "var(--color-forest)",
+                  textDecoration: "underline",
+                  textUnderlineOffset: 3,
+                }}
+              >
+                Reservá online y confirmá al instante →
+              </a>
+            </p>
           </div>
         </div>
       </div>

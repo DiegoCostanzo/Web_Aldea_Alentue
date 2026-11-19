@@ -1339,25 +1339,42 @@ function ReservasSection() {
                 </button>
               </form>
             )}
-            <p
-              className="text-base md:text-lg text-center mt-6"
-              style={{ color: "var(--color-bark)", fontWeight: 300 }}
+            <div
+              className="flex flex-col items-center gap-4 p-8 md:p-10 mt-6"
+              style={{
+                background: "var(--color-cream)",
+                border: "1px solid var(--color-stone-light)",
+                borderRadius: "3px",
+              }}
             >
-              ¿Ya sabés tus fechas?{" "}
+              <p
+                className="text-base md:text-lg text-center"
+                style={{ color: "var(--color-bark)", fontWeight: 300 }}
+              >
+                ¿Ya sabés tus fechas?
+              </p>
               <a
                 href={RESERVA_ONLINE_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-medium"
+                className="block w-full text-center py-3.5 text-sm font-medium tracking-widest uppercase transition-all duration-200"
                 style={{
-                  color: "var(--color-forest)",
-                  textDecoration: "underline",
-                  textUnderlineOffset: 3,
+                  background: "var(--color-forest)",
+                  color: "var(--color-cream)",
+                  borderRadius: "2px",
+                  textDecoration: "none",
+                  fontFamily: "var(--font-body)",
                 }}
+                onMouseEnter={(e) =>
+                  (e.currentTarget.style.background = "var(--color-forest-light)")
+                }
+                onMouseLeave={(e) =>
+                  (e.currentTarget.style.background = "var(--color-forest)")
+                }
               >
                 Reservá online y confirmá al instante →
               </a>
-            </p>
+            </div>
           </div>
         </div>
       </div>

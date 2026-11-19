@@ -411,8 +411,8 @@ function Hero() {
           className="text-lg md:text-xl max-w-lg mb-10 leading-relaxed"
           style={{ color: "var(--color-stone-light)", fontWeight: 300 }}
         >
-          Cabañas de madera y piedra en las Sierras de Córdoba, rodeadas de
-          bosque nativo y a pasos del río. Desconectate. Respirá.
+          Cabañas de madera y piedra en las Sierras de Córdoba, en un lugar
+          tranquilo y cerca del río. Desconectate. Respirá.
         </p>
         <div className="flex flex-wrap gap-4">
           <a

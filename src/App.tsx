@@ -144,7 +144,7 @@ const AMENITIES = [
   { icon: "🚿", label: "Ducha de lluvia" },
   { icon: "🍳", label: "Cocina equipada" },
   { icon: "🌄", label: "Vista a las sierras" },
-  { icon: "🐦", label: "Senderos propios" },
+  { icon: "🐦", label: "Senderos en la zona" },
   { icon: "🌙", label: "Cielo sin contaminación lumínica" },
 ];
 
@@ -860,16 +860,16 @@ function EntornoSection() {
             >
               Aldea Alentue está ubicada en Santa Rosa de Calamuchita, en las
               sierras de Córdoba, a 600 metros sobre el nivel del mar. Muy cerca
-              corre el río, y el predio está rodeado de bosque nativo de
-              molle, espinillo, tabaquillo y palo blanco.
+              corre el río, y la zona está rodeada de sierras y bosque nativo
+              de molle, espinillo, tabaquillo y palo blanco.
             </p>
             <p
               className="text-base leading-relaxed mb-10"
               style={{ color: "var(--color-stone-light)", fontWeight: 300 }}
             >
               Por la noche, el cielo sin contaminación lumínica ofrece una vista
-              incomparable de la Vía Láctea. De día, más de 5 km de senderos
-              propios te llevan hasta cascadas y miradores de 360°.
+              incomparable de la Vía Láctea. De día, los senderos de la zona te
+              llevan hasta cascadas y miradores de 360°.
             </p>
 
             <div className="grid grid-cols-2 gap-4">

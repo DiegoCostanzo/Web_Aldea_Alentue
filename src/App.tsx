@@ -876,9 +876,11 @@ function EntornoSection() {
           <div className="grid grid-cols-2 gap-3" style={{ height: 480 }}>
             <div className="relative overflow-hidden" style={{ borderRadius: "3px", background: "var(--color-stone)" }}>
               <img
-                src="https://images.unsplash.com/photo-1603203712068-a3bbbce6096f?w=600&h=600&fit=crop&auto=format"
-                alt="Arroyo entre árboles en las sierras"
+                src={`${import.meta.env.BASE_URL}images/entorno/cascada.jpg`}
+                alt="Cascada entre rocas y monte serrano"
+                loading="lazy"
                 className="w-full h-full object-cover"
+                style={{ objectPosition: "60% center" }}
               />
             </div>
             <div className="flex flex-col gap-3">
@@ -887,8 +889,9 @@ function EntornoSection() {
                 style={{ borderRadius: "3px", background: "var(--color-stone)" }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1543198455-0320f7df42f1?w=400&h=300&fit=crop&auto=format"
-                  alt="Colinas verdes de Córdoba"
+                  src={`${import.meta.env.BASE_URL}images/entorno/rio.jpg`}
+                  alt="El río de Santa Rosa de Calamuchita con las sierras de fondo"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -897,8 +900,9 @@ function EntornoSection() {
                 style={{ borderRadius: "3px", background: "var(--color-stone)" }}
               >
                 <img
-                  src="https://images.unsplash.com/photo-1717306756807-ccee038cb984?w=400&h=300&fit=crop&auto=format"
-                  alt="Arroyo en bosque serrano"
+                  src={`${import.meta.env.BASE_URL}images/entorno/puente.jpg`}
+                  alt="Puente colgante sobre el río en Santa Rosa de Calamuchita"
+                  loading="lazy"
                   className="w-full h-full object-cover"
                 />
               </div>

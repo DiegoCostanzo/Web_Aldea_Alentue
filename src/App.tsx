@@ -1340,7 +1340,7 @@ function ReservasSection() {
               </form>
             )}
             <p
-              className="text-sm text-center mt-6"
+              className="text-base md:text-lg text-center mt-6"
               style={{ color: "var(--color-bark)", fontWeight: 300 }}
             >
               ¿Ya sabés tus fechas?{" "}

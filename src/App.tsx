@@ -115,11 +115,6 @@ const FOTOS_COMPLEJO = [
   { file: "desayuno.jpg", alt: "Desayuno con medialunas y facturas servido en la cabaña" },
 ];
 
-const FOTOS_ENTORNO = [
-  { file: "balcon-sierras.jpg", alt: "Balcón con vista al parque y las sierras de Calamuchita" },
-  { file: "ventana-sierras.jpg", alt: "Las sierras desde la ventana de una cabaña" },
-  { file: "mates-parque.jpg", alt: "Mates al aire libre en el parque del complejo" },
-];
 
 const INSTALACIONES = [
   { titulo: "Piscina climatizada", desc: "Cubierta, vidriada y abierta todo el año." },
@@ -371,7 +366,7 @@ function Hero() {
     >
       <img
         src={`${import.meta.env.BASE_URL}images/hero-sierras.jpg`}
-        alt="Vista aérea de Santa Rosa de Calamuchita y las sierras de Córdoba"
+        alt="Sierras de Córdoba — colinas verdes al atardecer"
         className="absolute inset-0 w-full h-full object-cover"
         style={{ objectPosition: "center 40%" }}
       />
@@ -896,9 +891,8 @@ function EntornoSection() {
           <div className="grid grid-cols-2 gap-3" style={{ height: 480 }}>
             <div className="relative overflow-hidden" style={{ borderRadius: "3px", background: "var(--color-stone)" }}>
               <img
-                src={`${import.meta.env.BASE_URL}images/entorno/${FOTOS_ENTORNO[0].file}`}
-                alt={FOTOS_ENTORNO[0].alt}
-                loading="lazy"
+                src="https://images.unsplash.com/photo-1603203712068-a3bbbce6096f?w=600&h=600&fit=crop&auto=format"
+                alt="Arroyo entre árboles en las sierras"
                 className="w-full h-full object-cover"
               />
             </div>
@@ -908,9 +902,8 @@ function EntornoSection() {
                 style={{ borderRadius: "3px", background: "var(--color-stone)" }}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}images/entorno/${FOTOS_ENTORNO[1].file}`}
-                  alt={FOTOS_ENTORNO[1].alt}
-                loading="lazy"
+                  src="https://images.unsplash.com/photo-1543198455-0320f7df42f1?w=400&h=300&fit=crop&auto=format"
+                  alt="Colinas verdes de Córdoba"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -919,9 +912,8 @@ function EntornoSection() {
                 style={{ borderRadius: "3px", background: "var(--color-stone)" }}
               >
                 <img
-                  src={`${import.meta.env.BASE_URL}images/entorno/${FOTOS_ENTORNO[2].file}`}
-                  alt={FOTOS_ENTORNO[2].alt}
-                loading="lazy"
+                  src="https://images.unsplash.com/photo-1717306756807-ccee038cb984?w=400&h=300&fit=crop&auto=format"
+                  alt="Arroyo en bosque serrano"
                   className="w-full h-full object-cover"
                 />
               </div>

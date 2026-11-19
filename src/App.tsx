@@ -20,18 +20,16 @@ const FOTOS_MUESTRA = [
   },
 ];
 
-// Superficie y precio son datos de muestra hasta tener los reales.
 const GRUPOS = [
   {
     label: "Cabañas para 4",
     tipo: "Cabaña",
     capacity: "4 personas",
-    size: "60 m²",
-    price: "$45.000 / noche",
     desc: "Un refugio pensado para vos y tu familia o amigos, con todas las comodidades para descansar en las sierras.",
     servicios: [
       "Desayuno incluido",
       "Ropa blanca",
+      "Vajilla completa",
       "Aire frío/calor",
       "Calefacción en comedor y habitación",
       "Habitación matrimonial + cucheta",
@@ -43,12 +41,11 @@ const GRUPOS = [
     label: "Cabañas para 4 + 1",
     tipo: "Cabaña",
     capacity: "4 personas + 1 cama adicional",
-    size: "70 m²",
-    price: "$52.000 / noche",
     desc: "Un refugio para cuatro, con lugar para uno más: ideal para la familia o los amigos que quieren compartir las sierras.",
     servicios: [
       "Desayuno incluido",
       "Ropa blanca",
+      "Vajilla completa",
       "Aire frío/calor",
       "Calefacción en comedor y habitación",
       "Cama adicional para un quinto huésped",
@@ -60,15 +57,15 @@ const GRUPOS = [
     label: "Cabaña para 6",
     tipo: "Cabaña",
     capacity: "6 personas",
-    size: "95 m²",
-    price: "$70.000 / noche",
     desc: "Nuestra cabaña más amplia, perfecta para disfrutar momentos inolvidables con tu familia o amigos.",
     servicios: [
       "Desayuno incluido",
       "Ropa blanca",
+      "Vajilla completa",
       "Aire frío/calor",
-      "Hogar a leña",
-      "Dos habitaciones, cada una con calefacción",
+      "Habitación matrimonial + habitación con 2 camas individuales",
+      "2 camas en el comedor",
+      "Calefacción en ambas habitaciones",
       "Cochera con asador individual",
     ],
     nombres: ["Lihue"],
@@ -77,12 +74,11 @@ const GRUPOS = [
     label: "Monoambientes para 2/3",
     tipo: "Monoambiente",
     capacity: "2 a 3 personas",
-    size: "35 m²",
-    price: "$28.000 / noche",
     desc: "Un lugar encantador para una escapada en las sierras. Todo lo que necesitás para una estadía inolvidable.",
     servicios: [
       "Desayuno box en tu monoambiente",
       "Ropa blanca: sábanas, toallas y toallones",
+      "Vajilla completa",
       "Calefacción y aire acondicionado",
       "Cochera con asador individual",
     ],
@@ -102,8 +98,6 @@ const CABANAS = GRUPOS.flatMap((g) =>
     capacity: g.capacity,
     desc: g.desc,
     servicios: g.servicios,
-    size: g.size,
-    price: g.price,
     fotos: FOTOS_MUESTRA,
   })),
 );
@@ -138,9 +132,9 @@ const REDES = [
 ];
 
 const AMENITIES = [
-  { icon: "🔥", label: "Hogar a leña" },
+  { icon: "🚌", label: "Cerca de la terminal" },
   { icon: "🏊", label: "Piscina climatizada" },
-  { icon: "🌿", label: "Jardín nativo" },
+  { icon: "🌳", label: "Parque" },
   { icon: "🚿", label: "Ducha de lluvia" },
   { icon: "🍳", label: "Cocina equipada" },
   { icon: "🌄", label: "Vista a las sierras" },
@@ -653,40 +647,9 @@ function CabanasSection() {
                     {cab.capacity}
                   </span>
                 </div>
-                <div className="flex flex-col">
-                  <span
-                    className="text-xs uppercase tracking-wider mb-1"
-                    style={{ color: "var(--color-stone)" }}
-                  >
-                    Superficie
-                  </span>
-                  <span
-                    className="text-sm font-medium"
-                    style={{ color: "var(--color-charcoal)" }}
-                  >
-                    {cab.size}
-                  </span>
-                </div>
               </div>
             </div>
             <div className="flex items-end justify-between gap-4 flex-wrap">
-              <div className="flex flex-col">
-                <span
-                  className="text-xs uppercase tracking-wider"
-                  style={{ color: "var(--color-stone)" }}
-                >
-                  Desde
-                </span>
-                <span
-                  className="text-2xl font-semibold"
-                  style={{
-                    fontFamily: "var(--font-display)",
-                    color: "var(--color-forest)",
-                  }}
-                >
-                  {cab.price}
-                </span>
-              </div>
               <a
                 href="#reservas"
                 className="px-6 py-3 text-sm font-medium tracking-wide transition-all duration-200"

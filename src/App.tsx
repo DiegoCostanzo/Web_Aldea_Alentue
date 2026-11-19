@@ -30,6 +30,16 @@ const FOTOS_MONOAMBIENTE = [
   alt: f.alt,
 }));
 
+const FOTOS_LIHUE = [
+  { file: "matrimonial.jpg", alt: "Habitación matrimonial de la cabaña Lihue" },
+  { file: "2camas.jpg", alt: "Habitación con 2 camas individuales" },
+  { file: "comedor-cocina.jpg", alt: "Comedor con mesa para 6 y cocina equipada" },
+  { file: "comedor-camas.jpg", alt: "Comedor con 2 camas, mesa ratona y TV" },
+].map((f) => ({
+  src: `${import.meta.env.BASE_URL}images/lihue/${f.file}`,
+  alt: f.alt,
+}));
+
 const GRUPOS = [
   {
     label: "Cabañas para 4",
@@ -79,6 +89,7 @@ const GRUPOS = [
       "Cochera con asador individual",
     ],
     nombres: ["Lihue"],
+    fotos: FOTOS_LIHUE,
   },
   {
     label: "Monoambientes para 2/3",
